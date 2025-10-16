@@ -1,0 +1,1175 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_eaef87784077adeecd206ed513c8da43 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+</head>
+<body>
+    
+    
+    <div style="
+    position: fixed;
+    bottom: 50px;
+    left: 50px;
+    z-index: 9999;
+    background-color: white;
+    padding: 10px;
+    border: 2px solid grey;
+    border-radius: 8px;
+    font-size: 14px;">
+    <b>Tamaño del hospital</b><br>
+    <i style="background: steelblue; border-radius:50%; width:10px; height:10px; display:inline-block"></i> Pequeño (&lt;1600)<br>
+    <i style="background: darkcyan; border-radius:50%; width:10px; height:10px; display:inline-block"></i> Mediano (1600–2140)<br>
+    <i style="background: darkslategray; border-radius:50%; width:10px; height:10px; display:inline-block"></i> Grande (&gt;2141)<br>
+    <i style="background: gray; border-radius:50%; width:10px; height:10px; display:inline-block"></i> Sin Datos
+    </div>
+    
+    
+            <div class="folium-map" id="map_eaef87784077adeecd206ed513c8da43" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_eaef87784077adeecd206ed513c8da43 = L.map(
+                "map_eaef87784077adeecd206ed513c8da43",
+                {
+                    center: [-34.617338921334145, -58.43019549221687],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 12,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_7445470b652179d79e74251af91c0357 = L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 20,
+  "maxNativeZoom": 20,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"https://carto.com/attributions\"\u003eCARTO\u003c/a\u003e",
+  "subdomains": "abcd",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_7445470b652179d79e74251af91c0357.addTo(map_eaef87784077adeecd206ed513c8da43);
+        
+    
+            var circle_marker_b7392eb02b4f7728d573e7f1dfb7315e = L.circleMarker(
+                [-34.58114150705781, -58.40689678768225],
+                {"bubblingMouseEvents": true, "color": "darkslategray", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "darkslategray", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 22.45, "stroke": true, "weight": 3}
+            ).addTo(map_eaef87784077adeecd206ed513c8da43);
+        
+    
+        var popup_9b243cc9cfdfa8e374cdb88cb9f714b7 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_e92feb1008e8a87f083a2afcfd77502e = $(`<div id="html_e92feb1008e8a87f083a2afcfd77502e" style="width: 100.0%; height: 100.0%;"><b>HOSP. GENERAL DE AGUDOS DR. J. A. FERNANDEZ</b><br>Tipo: General de Agudos<br>Tamaño: Grande<br>Población: 2,245</div>`)[0];
+                popup_9b243cc9cfdfa8e374cdb88cb9f714b7.setContent(html_e92feb1008e8a87f083a2afcfd77502e);
+            
+        
+
+        circle_marker_b7392eb02b4f7728d573e7f1dfb7315e.bindPopup(popup_9b243cc9cfdfa8e374cdb88cb9f714b7)
+        ;
+
+        
+    
+    
+            circle_marker_b7392eb02b4f7728d573e7f1dfb7315e.bindTooltip(
+                `<div>
+                     HOSP. GENERAL DE AGUDOS DR. J. A. FERNANDEZ (Grande)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_f3d2dbab91e53af8811c2d1811461b33 = L.circleMarker(
+                [-34.62784248533263, -58.36593900890445],
+                {"bubblingMouseEvents": true, "color": "darkslategray", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "darkslategray", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 23.39, "stroke": true, "weight": 3}
+            ).addTo(map_eaef87784077adeecd206ed513c8da43);
+        
+    
+        var popup_3eaf48221a1aa9fb3266405ec4350d06 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_358505e8abf0385fba8baa7824441413 = $(`<div id="html_358505e8abf0385fba8baa7824441413" style="width: 100.0%; height: 100.0%;"><b>HOSP. GENERAL DE AGUDOS DR C. ARGERICH</b><br>Tipo: General de Agudos<br>Tamaño: Grande<br>Población: 2,339</div>`)[0];
+                popup_3eaf48221a1aa9fb3266405ec4350d06.setContent(html_358505e8abf0385fba8baa7824441413);
+            
+        
+
+        circle_marker_f3d2dbab91e53af8811c2d1811461b33.bindPopup(popup_3eaf48221a1aa9fb3266405ec4350d06)
+        ;
+
+        
+    
+    
+            circle_marker_f3d2dbab91e53af8811c2d1811461b33.bindTooltip(
+                `<div>
+                     HOSP. GENERAL DE AGUDOS DR C. ARGERICH (Grande)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_af4be795c59c042f4aea19469ea4ef9d = L.circleMarker(
+                [-34.64311566117251, -58.41086248186687],
+                {"bubblingMouseEvents": true, "color": "darkcyan", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "darkcyan", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 17.24, "stroke": true, "weight": 3}
+            ).addTo(map_eaef87784077adeecd206ed513c8da43);
+        
+    
+        var popup_0d41bf7da17a41480ea660d28ce4cbed = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_37bdfab0d1b931c728a96d5f5404175d = $(`<div id="html_37bdfab0d1b931c728a96d5f5404175d" style="width: 100.0%; height: 100.0%;"><b>HOSP. GENERAL DE AGUDOS J. A. PENNA</b><br>Tipo: General de Agudos<br>Tamaño: Mediano<br>Población: 1,724</div>`)[0];
+                popup_0d41bf7da17a41480ea660d28ce4cbed.setContent(html_37bdfab0d1b931c728a96d5f5404175d);
+            
+        
+
+        circle_marker_af4be795c59c042f4aea19469ea4ef9d.bindPopup(popup_0d41bf7da17a41480ea660d28ce4cbed)
+        ;
+
+        
+    
+    
+            circle_marker_af4be795c59c042f4aea19469ea4ef9d.bindTooltip(
+                `<div>
+                     HOSP. GENERAL DE AGUDOS J. A. PENNA (Mediano)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_7e85a39429cc9fb8f66700f7e66416c6 = L.circleMarker(
+                [-34.64389266836816, -58.454117214446974],
+                {"bubblingMouseEvents": true, "color": "darkcyan", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "darkcyan", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 18.47, "stroke": true, "weight": 3}
+            ).addTo(map_eaef87784077adeecd206ed513c8da43);
+        
+    
+        var popup_ba62dbc5cc9ebaf010a56a56d712a4df = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_78224b6ac0e7cf971695cf47355669ee = $(`<div id="html_78224b6ac0e7cf971695cf47355669ee" style="width: 100.0%; height: 100.0%;"><b>HOSP. GENERAL DE AGUDOS P. PIÃERO</b><br>Tipo: General de Agudos<br>Tamaño: Mediano<br>Población: 1,847</div>`)[0];
+                popup_ba62dbc5cc9ebaf010a56a56d712a4df.setContent(html_78224b6ac0e7cf971695cf47355669ee);
+            
+        
+
+        circle_marker_7e85a39429cc9fb8f66700f7e66416c6.bindPopup(popup_ba62dbc5cc9ebaf010a56a56d712a4df)
+        ;
+
+        
+    
+    
+            circle_marker_7e85a39429cc9fb8f66700f7e66416c6.bindTooltip(
+                `<div>
+                     HOSP. GENERAL DE AGUDOS P. PIÃERO (Mediano)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_708fc267e8d1739d326bf94226fed29a = L.circleMarker(
+                [-34.59997940297447, -58.511050848238405],
+                {"bubblingMouseEvents": true, "color": "steelblue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "steelblue", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7.25, "stroke": true, "weight": 3}
+            ).addTo(map_eaef87784077adeecd206ed513c8da43);
+        
+    
+        var popup_38542f1a25d0f34ccec3570c2290e2b8 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_a4d99d3f13805e12bab903fc7d8aa8ed = $(`<div id="html_a4d99d3f13805e12bab903fc7d8aa8ed" style="width: 100.0%; height: 100.0%;"><b>HOSP. GENERAL DE AGUDOS A. ZUBIZARRETA</b><br>Tipo: General de Agudos<br>Tamaño: Pequeño<br>Población: 725</div>`)[0];
+                popup_38542f1a25d0f34ccec3570c2290e2b8.setContent(html_a4d99d3f13805e12bab903fc7d8aa8ed);
+            
+        
+
+        circle_marker_708fc267e8d1739d326bf94226fed29a.bindPopup(popup_38542f1a25d0f34ccec3570c2290e2b8)
+        ;
+
+        
+    
+    
+            circle_marker_708fc267e8d1739d326bf94226fed29a.bindTooltip(
+                `<div>
+                     HOSP. GENERAL DE AGUDOS A. ZUBIZARRETA (Pequeño)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_8260843f9530dfdd2bf0e1aec54b32f7 = L.circleMarker(
+                [-34.649185506709266, -58.51562699382119],
+                {"bubblingMouseEvents": true, "color": "darkslategray", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "darkslategray", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 21.41, "stroke": true, "weight": 3}
+            ).addTo(map_eaef87784077adeecd206ed513c8da43);
+        
+    
+        var popup_6490a0626e47ba9d72486275dd6310e1 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_8c5e0883ea57005b0d4a3f139941d7db = $(`<div id="html_8c5e0883ea57005b0d4a3f139941d7db" style="width: 100.0%; height: 100.0%;"><b>HOSP. GENERAL DE AGUDOS DONACION F. SANTOJANNI</b><br>Tipo: General de Agudos<br>Tamaño: Grande<br>Población: 2,141</div>`)[0];
+                popup_6490a0626e47ba9d72486275dd6310e1.setContent(html_8c5e0883ea57005b0d4a3f139941d7db);
+            
+        
+
+        circle_marker_8260843f9530dfdd2bf0e1aec54b32f7.bindPopup(popup_6490a0626e47ba9d72486275dd6310e1)
+        ;
+
+        
+    
+    
+            circle_marker_8260843f9530dfdd2bf0e1aec54b32f7.bindTooltip(
+                `<div>
+                     HOSP. GENERAL DE AGUDOS DONACION F. SANTOJANNI (Grande)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_9b9f1744a5e880c8ffcc5b173995a934 = L.circleMarker(
+                [-34.56505243351162, -58.47107844366725],
+                {"bubblingMouseEvents": true, "color": "darkcyan", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "darkcyan", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 16.16, "stroke": true, "weight": 3}
+            ).addTo(map_eaef87784077adeecd206ed513c8da43);
+        
+    
+        var popup_271fe74ae9140a2ea6ee020c2fcc8d73 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_76c23d467d276107a8a3f8fb886cf960 = $(`<div id="html_76c23d467d276107a8a3f8fb886cf960" style="width: 100.0%; height: 100.0%;"><b>HOSP. GENERAL DE AGUDOS DR. I. PIROVANO</b><br>Tipo: General de Agudos<br>Tamaño: Mediano<br>Población: 1,616</div>`)[0];
+                popup_271fe74ae9140a2ea6ee020c2fcc8d73.setContent(html_76c23d467d276107a8a3f8fb886cf960);
+            
+        
+
+        circle_marker_9b9f1744a5e880c8ffcc5b173995a934.bindPopup(popup_271fe74ae9140a2ea6ee020c2fcc8d73)
+        ;
+
+        
+    
+    
+            circle_marker_9b9f1744a5e880c8ffcc5b173995a934.bindTooltip(
+                `<div>
+                     HOSP. GENERAL DE AGUDOS DR. I. PIROVANO (Mediano)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_4d2576040b06a44a89afcd07d926e3b3 = L.circleMarker(
+                [-34.61765882060614, -58.40961324590942],
+                {"bubblingMouseEvents": true, "color": "darkslategray", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "darkslategray", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 22.31, "stroke": true, "weight": 3}
+            ).addTo(map_eaef87784077adeecd206ed513c8da43);
+        
+    
+        var popup_fe399445b0f497c3a2a559e4c7d11641 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_a783c83d224b3c0b3ec3e1d5cbf32346 = $(`<div id="html_a783c83d224b3c0b3ec3e1d5cbf32346" style="width: 100.0%; height: 100.0%;"><b>HOSP. GENERAL DE AGUDOS J. M. RAMOS MEJIA</b><br>Tipo: General de Agudos<br>Tamaño: Grande<br>Población: 2,231</div>`)[0];
+                popup_fe399445b0f497c3a2a559e4c7d11641.setContent(html_a783c83d224b3c0b3ec3e1d5cbf32346);
+            
+        
+
+        circle_marker_4d2576040b06a44a89afcd07d926e3b3.bindPopup(popup_fe399445b0f497c3a2a559e4c7d11641)
+        ;
+
+        
+    
+    
+            circle_marker_4d2576040b06a44a89afcd07d926e3b3.bindTooltip(
+                `<div>
+                     HOSP. GENERAL DE AGUDOS J. M. RAMOS MEJIA (Grande)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_20ffd813931d69a2a64d51e2f2727e00 = L.circleMarker(
+                [-34.58476564075076, -58.40051657411193],
+                {"bubblingMouseEvents": true, "color": "darkcyan", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "darkcyan", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 17.08, "stroke": true, "weight": 3}
+            ).addTo(map_eaef87784077adeecd206ed513c8da43);
+        
+    
+        var popup_f13320c73e1dbfc372e7f94e17e306e6 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_af61a53d95a573f2012878d5c30a9425 = $(`<div id="html_af61a53d95a573f2012878d5c30a9425" style="width: 100.0%; height: 100.0%;"><b>HOSP. GENERAL DE AGUDOS B. RIVADAVIA</b><br>Tipo: General de Agudos<br>Tamaño: Mediano<br>Población: 1,708</div>`)[0];
+                popup_f13320c73e1dbfc372e7f94e17e306e6.setContent(html_af61a53d95a573f2012878d5c30a9425);
+            
+        
+
+        circle_marker_20ffd813931d69a2a64d51e2f2727e00.bindPopup(popup_f13320c73e1dbfc372e7f94e17e306e6)
+        ;
+
+        
+    
+    
+            circle_marker_20ffd813931d69a2a64d51e2f2727e00.bindTooltip(
+                `<div>
+                     HOSP. GENERAL DE AGUDOS B. RIVADAVIA (Mediano)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_29664d3d7dc743df4e677846d1421705 = L.circleMarker(
+                [-34.587391736429986, -58.471117369639664],
+                {"bubblingMouseEvents": true, "color": "steelblue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "steelblue", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 11.54, "stroke": true, "weight": 3}
+            ).addTo(map_eaef87784077adeecd206ed513c8da43);
+        
+    
+        var popup_855060e537ae0ce29032a4fb03459be8 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_4f05905d867bf65aaa8a92f47a385c4a = $(`<div id="html_4f05905d867bf65aaa8a92f47a385c4a" style="width: 100.0%; height: 100.0%;"><b>HOSP. GENERAL DE AGUDOS DR. E. TORNU</b><br>Tipo: General de Agudos<br>Tamaño: Pequeño<br>Población: 1,154</div>`)[0];
+                popup_855060e537ae0ce29032a4fb03459be8.setContent(html_4f05905d867bf65aaa8a92f47a385c4a);
+            
+        
+
+        circle_marker_29664d3d7dc743df4e677846d1421705.bindPopup(popup_855060e537ae0ce29032a4fb03459be8)
+        ;
+
+        
+    
+    
+            circle_marker_29664d3d7dc743df4e677846d1421705.bindTooltip(
+                `<div>
+                     HOSP. GENERAL DE AGUDOS DR. E. TORNU (Pequeño)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_123a9738c6091ac0b0097d16db10a76c = L.circleMarker(
+                [-34.62416961626779, -58.46950196243394],
+                {"bubblingMouseEvents": true, "color": "steelblue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "steelblue", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15.05, "stroke": true, "weight": 3}
+            ).addTo(map_eaef87784077adeecd206ed513c8da43);
+        
+    
+        var popup_3619ff09f87aabd44de6184fe210ecdf = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_1fd5069ad04b3fc0b9a50b0488d42106 = $(`<div id="html_1fd5069ad04b3fc0b9a50b0488d42106" style="width: 100.0%; height: 100.0%;"><b>HOSP. GENERAL DE AGUDOS DR. T. ALVAREZ</b><br>Tipo: General de Agudos<br>Tamaño: Pequeño<br>Población: 1,505</div>`)[0];
+                popup_3619ff09f87aabd44de6184fe210ecdf.setContent(html_1fd5069ad04b3fc0b9a50b0488d42106);
+            
+        
+
+        circle_marker_123a9738c6091ac0b0097d16db10a76c.bindPopup(popup_3619ff09f87aabd44de6184fe210ecdf)
+        ;
+
+        
+    
+    
+            circle_marker_123a9738c6091ac0b0097d16db10a76c.bindTooltip(
+                `<div>
+                     HOSP. GENERAL DE AGUDOS DR. T. ALVAREZ (Pequeño)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_69dac4a08dec7fe56987a18b66687b0f = L.circleMarker(
+                [-34.60897216805312, -58.43798272588448],
+                {"bubblingMouseEvents": true, "color": "darkcyan", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "darkcyan", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 21.26, "stroke": true, "weight": 3}
+            ).addTo(map_eaef87784077adeecd206ed513c8da43);
+        
+    
+        var popup_7940ca9ec7666bb2147ef15f259b146b = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_25ffe643a150873038f20e66baf4d69d = $(`<div id="html_25ffe643a150873038f20e66baf4d69d" style="width: 100.0%; height: 100.0%;"><b>HOSP. GENERAL DE AGUDOS DR. C. DURAND</b><br>Tipo: General de Agudos<br>Tamaño: Mediano<br>Población: 2,126</div>`)[0];
+                popup_7940ca9ec7666bb2147ef15f259b146b.setContent(html_25ffe643a150873038f20e66baf4d69d);
+            
+        
+
+        circle_marker_69dac4a08dec7fe56987a18b66687b0f.bindPopup(popup_7940ca9ec7666bb2147ef15f259b146b)
+        ;
+
+        
+    
+    
+            circle_marker_69dac4a08dec7fe56987a18b66687b0f.bindTooltip(
+                `<div>
+                     HOSP. GENERAL DE AGUDOS DR. C. DURAND (Mediano)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_3631c1522fdba7bdf37744ead3d71c4c = L.circleMarker(
+                [-34.67175083528678, -58.45680688044516],
+                {"bubblingMouseEvents": true, "color": "steelblue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "steelblue", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5.57, "stroke": true, "weight": 3}
+            ).addTo(map_eaef87784077adeecd206ed513c8da43);
+        
+    
+        var popup_2fb9fb897e0d06117255390a89386f18 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_f016ba67bed6b3a1e6b2e4d7c891dc2a = $(`<div id="html_f016ba67bed6b3a1e6b2e4d7c891dc2a" style="width: 100.0%; height: 100.0%;"><b>HOSP. CECILIA GRIERSON</b><br>Tipo: General de Agudos<br>Tamaño: Pequeño<br>Población: 557</div>`)[0];
+                popup_2fb9fb897e0d06117255390a89386f18.setContent(html_f016ba67bed6b3a1e6b2e4d7c891dc2a);
+            
+        
+
+        circle_marker_3631c1522fdba7bdf37744ead3d71c4c.bindPopup(popup_2fb9fb897e0d06117255390a89386f18)
+        ;
+
+        
+    
+    
+            circle_marker_3631c1522fdba7bdf37744ead3d71c4c.bindTooltip(
+                `<div>
+                     HOSP. CECILIA GRIERSON (Pequeño)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_509b36413c401c2b18d71f0761d8ebea = L.circleMarker(
+                [-34.625353, -58.507984],
+                {"bubblingMouseEvents": true, "color": "steelblue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "steelblue", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9.5, "stroke": true, "weight": 3}
+            ).addTo(map_eaef87784077adeecd206ed513c8da43);
+        
+    
+        var popup_edbb15ea490230fc9721f1a125327686 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_2e02a36459562312cec9c2f709beb25d = $(`<div id="html_2e02a36459562312cec9c2f709beb25d" style="width: 100.0%; height: 100.0%;"><b>HOSP. GENERAL DE AGUDOS D. VELEZ SARSFIELD</b><br>Tipo: General de Agudos<br>Tamaño: Pequeño<br>Población: 950</div>`)[0];
+                popup_edbb15ea490230fc9721f1a125327686.setContent(html_2e02a36459562312cec9c2f709beb25d);
+            
+        
+
+        circle_marker_509b36413c401c2b18d71f0761d8ebea.bindPopup(popup_edbb15ea490230fc9721f1a125327686)
+        ;
+
+        
+    
+    
+            circle_marker_509b36413c401c2b18d71f0761d8ebea.bindTooltip(
+                `<div>
+                     HOSP. GENERAL DE AGUDOS D. VELEZ SARSFIELD (Pequeño)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_0f39ab1336b406648c1d0a0deabf8fa5 = L.circleMarker(
+                [-34.60706574725891, -58.43307356346725],
+                {"bubblingMouseEvents": true, "color": "steelblue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "steelblue", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6.61, "stroke": true, "weight": 3}
+            ).addTo(map_eaef87784077adeecd206ed513c8da43);
+        
+    
+        var popup_bac9b2c71427728778546e8ab1f7439d = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_bf3a8bce977a443fa0a3d9694dbb807f = $(`<div id="html_bf3a8bce977a443fa0a3d9694dbb807f" style="width: 100.0%; height: 100.0%;"><b>HOSP. MUNICIPAL DE ONCOLOGIA M. CURIE</b><br>Tipo: Especializado<br>Tamaño: Pequeño<br>Población: 661</div>`)[0];
+                popup_bac9b2c71427728778546e8ab1f7439d.setContent(html_bf3a8bce977a443fa0a3d9694dbb807f);
+            
+        
+
+        circle_marker_0f39ab1336b406648c1d0a0deabf8fa5.bindPopup(popup_bac9b2c71427728778546e8ab1f7439d)
+        ;
+
+        
+    
+    
+            circle_marker_0f39ab1336b406648c1d0a0deabf8fa5.bindTooltip(
+                `<div>
+                     HOSP. MUNICIPAL DE ONCOLOGIA M. CURIE (Pequeño)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_9aacb9d72dc11ce2203db19ad587b212 = L.circleMarker(
+                [-34.553896915155235, -58.44098986943038],
+                {"bubblingMouseEvents": true, "color": "steelblue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "steelblue", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 3.89, "stroke": true, "weight": 3}
+            ).addTo(map_eaef87784077adeecd206ed513c8da43);
+        
+    
+        var popup_4280817d8f05476e85320dd567bcce23 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_fcfe882e077b277fd83043940f1280c2 = $(`<div id="html_fcfe882e077b277fd83043940f1280c2" style="width: 100.0%; height: 100.0%;"><b>INSTITUTO DE REHABILITACION PSICOFISICA (I.R.E.P.)</b><br>Tipo: Especializado<br>Tamaño: Pequeño<br>Población: 389</div>`)[0];
+                popup_4280817d8f05476e85320dd567bcce23.setContent(html_fcfe882e077b277fd83043940f1280c2);
+            
+        
+
+        circle_marker_9aacb9d72dc11ce2203db19ad587b212.bindPopup(popup_4280817d8f05476e85320dd567bcce23)
+        ;
+
+        
+    
+    
+            circle_marker_9aacb9d72dc11ce2203db19ad587b212.bindTooltip(
+                `<div>
+                     INSTITUTO DE REHABILITACION PSICOFISICA (I.R.E.P.) (Pequeño)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_746e9218ffb67aeef4598a2e930cdbc0 = L.circleMarker(
+                [-34.63643346868974, -58.382131897517425],
+                {"bubblingMouseEvents": true, "color": "steelblue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "steelblue", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8.51, "stroke": true, "weight": 3}
+            ).addTo(map_eaef87784077adeecd206ed513c8da43);
+        
+    
+        var popup_bd24d3664d783493c16ee8d7c17e8d2f = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_5b82a11e2f5e9143e7037d51bcffb571 = $(`<div id="html_5b82a11e2f5e9143e7037d51bcffb571" style="width: 100.0%; height: 100.0%;"><b>HOSP. DE SALUD MENTAL J. BORDA</b><br>Tipo: Especializado<br>Tamaño: Pequeño<br>Población: 851</div>`)[0];
+                popup_bd24d3664d783493c16ee8d7c17e8d2f.setContent(html_5b82a11e2f5e9143e7037d51bcffb571);
+            
+        
+
+        circle_marker_746e9218ffb67aeef4598a2e930cdbc0.bindPopup(popup_bd24d3664d783493c16ee8d7c17e8d2f)
+        ;
+
+        
+    
+    
+            circle_marker_746e9218ffb67aeef4598a2e930cdbc0.bindTooltip(
+                `<div>
+                     HOSP. DE SALUD MENTAL J. BORDA (Pequeño)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_09421686565cd6e635772dc13690a984 = L.circleMarker(
+                [-34.635700666862874, -58.38233197070343],
+                {"bubblingMouseEvents": true, "color": "steelblue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "steelblue", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4.32, "stroke": true, "weight": 3}
+            ).addTo(map_eaef87784077adeecd206ed513c8da43);
+        
+    
+        var popup_9f53c3e491430a6dd0788db903aac6b9 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_0aff4600876bafda54f11dafbbd77a90 = $(`<div id="html_0aff4600876bafda54f11dafbbd77a90" style="width: 100.0%; height: 100.0%;"><b>HOSP. INFANTO JUVENIL C. TOBAR GARCIA</b><br>Tipo: Especializado<br>Tamaño: Pequeño<br>Población: 432</div>`)[0];
+                popup_9f53c3e491430a6dd0788db903aac6b9.setContent(html_0aff4600876bafda54f11dafbbd77a90);
+            
+        
+
+        circle_marker_09421686565cd6e635772dc13690a984.bindPopup(popup_9f53c3e491430a6dd0788db903aac6b9)
+        ;
+
+        
+    
+    
+            circle_marker_09421686565cd6e635772dc13690a984.bindTooltip(
+                `<div>
+                     HOSP. INFANTO JUVENIL C. TOBAR GARCIA (Pequeño)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_c537f1a4cc873314c4b9f26cb53fc240 = L.circleMarker(
+                [-34.63415208673852, -58.39131459150936],
+                {"bubblingMouseEvents": true, "color": "steelblue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "steelblue", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6.05, "stroke": true, "weight": 3}
+            ).addTo(map_eaef87784077adeecd206ed513c8da43);
+        
+    
+        var popup_74ea2a92cdfc1344407b0a105d624d53 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_2c3f4ea12da80a2ef430d7c01d536cfd = $(`<div id="html_2c3f4ea12da80a2ef430d7c01d536cfd" style="width: 100.0%; height: 100.0%;"><b>HOSP. DE GASTROENTEROLOGIA B. UDAONDO</b><br>Tipo: Especializado<br>Tamaño: Pequeño<br>Población: 605</div>`)[0];
+                popup_74ea2a92cdfc1344407b0a105d624d53.setContent(html_2c3f4ea12da80a2ef430d7c01d536cfd);
+            
+        
+
+        circle_marker_c537f1a4cc873314c4b9f26cb53fc240.bindPopup(popup_74ea2a92cdfc1344407b0a105d624d53)
+        ;
+
+        
+    
+    
+            circle_marker_c537f1a4cc873314c4b9f26cb53fc240.bindTooltip(
+                `<div>
+                     HOSP. DE GASTROENTEROLOGIA B. UDAONDO (Pequeño)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_1ce26baf131f80df1bcbaf4acb4e5865 = L.circleMarker(
+                [-34.61798117804882, -58.502143516594025],
+                {"bubblingMouseEvents": true, "color": "steelblue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "steelblue", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4.96, "stroke": true, "weight": 3}
+            ).addTo(map_eaef87784077adeecd206ed513c8da43);
+        
+    
+        var popup_079bae0ad7254a499e17a60c4e3e9dfc = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_90587bbac1c4e5ea79f127083795ce39 = $(`<div id="html_90587bbac1c4e5ea79f127083795ce39" style="width: 100.0%; height: 100.0%;"><b>HOSP. DE REHABILITACION M. ROCCA</b><br>Tipo: Especializado<br>Tamaño: Pequeño<br>Población: 496</div>`)[0];
+                popup_079bae0ad7254a499e17a60c4e3e9dfc.setContent(html_90587bbac1c4e5ea79f127083795ce39);
+            
+        
+
+        circle_marker_1ce26baf131f80df1bcbaf4acb4e5865.bindPopup(popup_079bae0ad7254a499e17a60c4e3e9dfc)
+        ;
+
+        
+    
+    
+            circle_marker_1ce26baf131f80df1bcbaf4acb4e5865.bindTooltip(
+                `<div>
+                     HOSP. DE REHABILITACION M. ROCCA (Pequeño)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_c561e826b033e39fcdfddfc38ed13225 = L.circleMarker(
+                [-34.61463396881705, -58.42766151205291],
+                {"bubblingMouseEvents": true, "color": "steelblue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "steelblue", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 3.11, "stroke": true, "weight": 3}
+            ).addTo(map_eaef87784077adeecd206ed513c8da43);
+        
+    
+        var popup_82eeb883e86c8a097530ef930b1c9565 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_12a9e0b46a7c63058bfaca80fc2a8985 = $(`<div id="html_12a9e0b46a7c63058bfaca80fc2a8985" style="width: 100.0%; height: 100.0%;"><b>HOSP. DE ODONTOLOGIA  J. DUEÃAS</b><br>Tipo: Especializado<br>Tamaño: Pequeño<br>Población: 311</div>`)[0];
+                popup_82eeb883e86c8a097530ef930b1c9565.setContent(html_12a9e0b46a7c63058bfaca80fc2a8985);
+            
+        
+
+        circle_marker_c561e826b033e39fcdfddfc38ed13225.bindPopup(popup_82eeb883e86c8a097530ef930b1c9565)
+        ;
+
+        
+    
+    
+            circle_marker_c561e826b033e39fcdfddfc38ed13225.bindTooltip(
+                `<div>
+                     HOSP. DE ODONTOLOGIA  J. DUEÃAS (Pequeño)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_cf48cced86a251724d84b1d1e6405f92 = L.circleMarker(
+                [-34.60543377881549, -58.46018603096427],
+                {"bubblingMouseEvents": true, "color": "steelblue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "steelblue", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 2.92, "stroke": true, "weight": 3}
+            ).addTo(map_eaef87784077adeecd206ed513c8da43);
+        
+    
+        var popup_44704b0c0197ca6df7ad67df82befcd2 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_59eddd6542f9e20c0ab15ddbf7da8021 = $(`<div id="html_59eddd6542f9e20c0ab15ddbf7da8021" style="width: 100.0%; height: 100.0%;"><b>HOSP. OFTALMOLOGICO DR. P. LAGLEYZE</b><br>Tipo: Especializado<br>Tamaño: Pequeño<br>Población: 292</div>`)[0];
+                popup_44704b0c0197ca6df7ad67df82befcd2.setContent(html_59eddd6542f9e20c0ab15ddbf7da8021);
+            
+        
+
+        circle_marker_cf48cced86a251724d84b1d1e6405f92.bindPopup(popup_44704b0c0197ca6df7ad67df82befcd2)
+        ;
+
+        
+    
+    
+            circle_marker_cf48cced86a251724d84b1d1e6405f92.bindTooltip(
+                `<div>
+                     HOSP. OFTALMOLOGICO DR. P. LAGLEYZE (Pequeño)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_d9db02fc567409cf60284aca820108b2 = L.circleMarker(
+                [-34.608471436145855, -58.43494484337051],
+                {"bubblingMouseEvents": true, "color": "steelblue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "steelblue", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 1.6, "stroke": true, "weight": 3}
+            ).addTo(map_eaef87784077adeecd206ed513c8da43);
+        
+    
+        var popup_abb2532024465e74243d4121c012a005 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_994d3ddfe7b94bb48ebad484d068ded4 = $(`<div id="html_994d3ddfe7b94bb48ebad484d068ded4" style="width: 100.0%; height: 100.0%;"><b>INST. DE ZOONOSIS L. PASTEUR</b><br>Tipo: Especializado<br>Tamaño: Pequeño<br>Población: 160</div>`)[0];
+                popup_abb2532024465e74243d4121c012a005.setContent(html_994d3ddfe7b94bb48ebad484d068ded4);
+            
+        
+
+        circle_marker_d9db02fc567409cf60284aca820108b2.bindPopup(popup_abb2532024465e74243d4121c012a005)
+        ;
+
+        
+    
+    
+            circle_marker_d9db02fc567409cf60284aca820108b2.bindTooltip(
+                `<div>
+                     INST. DE ZOONOSIS L. PASTEUR (Pequeño)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_9e306e7501d981a374bce47bd3460e05 = L.circleMarker(
+                [-34.62278073775925, -58.39446030315795],
+                {"bubblingMouseEvents": true, "color": "steelblue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "steelblue", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4.12, "stroke": true, "weight": 3}
+            ).addTo(map_eaef87784077adeecd206ed513c8da43);
+        
+    
+        var popup_58cf6cc0f5391306783b075279e58a1a = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_113e302ddffe69a0f0d7ff6a84fa3081 = $(`<div id="html_113e302ddffe69a0f0d7ff6a84fa3081" style="width: 100.0%; height: 100.0%;"><b>HOSP. DE OFTALMOLOGIA SANTA LUCIA</b><br>Tipo: Especializado<br>Tamaño: Pequeño<br>Población: 412</div>`)[0];
+                popup_58cf6cc0f5391306783b075279e58a1a.setContent(html_113e302ddffe69a0f0d7ff6a84fa3081);
+            
+        
+
+        circle_marker_9e306e7501d981a374bce47bd3460e05.bindPopup(popup_58cf6cc0f5391306783b075279e58a1a)
+        ;
+
+        
+    
+    
+            circle_marker_9e306e7501d981a374bce47bd3460e05.bindTooltip(
+                `<div>
+                     HOSP. DE OFTALMOLOGIA SANTA LUCIA (Pequeño)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_1ba0300f2b4ac14fbe19557e840b42ce = L.circleMarker(
+                [-34.638871954188126, -58.36012458299009],
+                {"bubblingMouseEvents": true, "color": "steelblue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "steelblue", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 1.06, "stroke": true, "weight": 3}
+            ).addTo(map_eaef87784077adeecd206ed513c8da43);
+        
+    
+        var popup_475e0027488f695f9244919227754aa1 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_c66084fbccf4f321e946b590e05c5dbb = $(`<div id="html_c66084fbccf4f321e946b590e05c5dbb" style="width: 100.0%; height: 100.0%;"><b>HOSP. DE ODONTOLOGIA INFANTIL DON BENITO QUINQUELA MARTIN</b><br>Tipo: Especializado<br>Tamaño: Pequeño<br>Población: 106</div>`)[0];
+                popup_475e0027488f695f9244919227754aa1.setContent(html_c66084fbccf4f321e946b590e05c5dbb);
+            
+        
+
+        circle_marker_1ba0300f2b4ac14fbe19557e840b42ce.bindPopup(popup_475e0027488f695f9244919227754aa1)
+        ;
+
+        
+    
+    
+            circle_marker_1ba0300f2b4ac14fbe19557e840b42ce.bindTooltip(
+                `<div>
+                     HOSP. DE ODONTOLOGIA INFANTIL DON BENITO QUINQUELA MARTIN (Pequeño)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_6e65d1a8fc6b3388c2d5a798dad49375 = L.circleMarker(
+                [-34.63485485922334, -58.402753291547654],
+                {"bubblingMouseEvents": true, "color": "steelblue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "steelblue", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9.2, "stroke": true, "weight": 3}
+            ).addTo(map_eaef87784077adeecd206ed513c8da43);
+        
+    
+        var popup_724d52b5f2b3939c05aa8eecaa8952b1 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_294e503dc5dba33a1a60e8c19dd0d024 = $(`<div id="html_294e503dc5dba33a1a60e8c19dd0d024" style="width: 100.0%; height: 100.0%;"><b>HOSP. MATERNO INFANTIL R. SARDA</b><br>Tipo: Especializado<br>Tamaño: Pequeño<br>Población: 920</div>`)[0];
+                popup_724d52b5f2b3939c05aa8eecaa8952b1.setContent(html_294e503dc5dba33a1a60e8c19dd0d024);
+            
+        
+
+        circle_marker_6e65d1a8fc6b3388c2d5a798dad49375.bindPopup(popup_724d52b5f2b3939c05aa8eecaa8952b1)
+        ;
+
+        
+    
+    
+            circle_marker_6e65d1a8fc6b3388c2d5a798dad49375.bindTooltip(
+                `<div>
+                     HOSP. MATERNO INFANTIL R. SARDA (Pequeño)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_145f90494afdf3128967de4436e3698b = L.circleMarker(
+                [-34.630209729937576, -58.37584718089676],
+                {"bubblingMouseEvents": true, "color": "steelblue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "steelblue", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4.38, "stroke": true, "weight": 3}
+            ).addTo(map_eaef87784077adeecd206ed513c8da43);
+        
+    
+        var popup_1e5185e41286e6d4c8ec789b1db53504 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_0500b166c2580fbdddffebfb95f2678c = $(`<div id="html_0500b166c2580fbdddffebfb95f2678c" style="width: 100.0%; height: 100.0%;"><b>HOSP. DE REHABILITACION RESPIRATORIA MARIA FERRER</b><br>Tipo: Especializado<br>Tamaño: Pequeño<br>Población: 438</div>`)[0];
+                popup_1e5185e41286e6d4c8ec789b1db53504.setContent(html_0500b166c2580fbdddffebfb95f2678c);
+            
+        
+
+        circle_marker_145f90494afdf3128967de4436e3698b.bindPopup(popup_1e5185e41286e6d4c8ec789b1db53504)
+        ;
+
+        
+    
+    
+            circle_marker_145f90494afdf3128967de4436e3698b.bindTooltip(
+                `<div>
+                     HOSP. DE REHABILITACION RESPIRATORIA MARIA FERRER (Pequeño)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_aa9bd93dd782ea246e8e900c278024e8 = L.circleMarker(
+                [-34.63940249274096, -58.38515928545902],
+                {"bubblingMouseEvents": true, "color": "steelblue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "steelblue", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9.37, "stroke": true, "weight": 3}
+            ).addTo(map_eaef87784077adeecd206ed513c8da43);
+        
+    
+        var popup_d163e926ea75c4a6fa4fa000d7b03159 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_20dbaa1c40c7e7187a31ae356d82c477 = $(`<div id="html_20dbaa1c40c7e7187a31ae356d82c477" style="width: 100.0%; height: 100.0%;"><b>HOSP. DE SALUD MENTAL BRAULIO MOYANO</b><br>Tipo: Especializado<br>Tamaño: Pequeño<br>Población: 937</div>`)[0];
+                popup_d163e926ea75c4a6fa4fa000d7b03159.setContent(html_20dbaa1c40c7e7187a31ae356d82c477);
+            
+        
+
+        circle_marker_aa9bd93dd782ea246e8e900c278024e8.bindPopup(popup_d163e926ea75c4a6fa4fa000d7b03159)
+        ;
+
+        
+    
+    
+            circle_marker_aa9bd93dd782ea246e8e900c278024e8.bindTooltip(
+                `<div>
+                     HOSP. DE SALUD MENTAL BRAULIO MOYANO (Pequeño)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_0226c114140a7d260da192362086109b = L.circleMarker(
+                [-34.5844598871737, -58.402649716717704],
+                {"bubblingMouseEvents": true, "color": "steelblue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "steelblue", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 2.18, "stroke": true, "weight": 3}
+            ).addTo(map_eaef87784077adeecd206ed513c8da43);
+        
+    
+        var popup_3f4c356bdfcadeb511a300149f97dadd = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_84dc0ad410720dcf93bb602367806ef6 = $(`<div id="html_84dc0ad410720dcf93bb602367806ef6" style="width: 100.0%; height: 100.0%;"><b>HOSP. ODONTOLOGICO DR. R. CARRILLO (EX NACIONAL)</b><br>Tipo: Especializado<br>Tamaño: Pequeño<br>Población: 218</div>`)[0];
+                popup_3f4c356bdfcadeb511a300149f97dadd.setContent(html_84dc0ad410720dcf93bb602367806ef6);
+            
+        
+
+        circle_marker_0226c114140a7d260da192362086109b.bindPopup(popup_3f4c356bdfcadeb511a300149f97dadd)
+        ;
+
+        
+    
+    
+            circle_marker_0226c114140a7d260da192362086109b.bindTooltip(
+                `<div>
+                     HOSP. ODONTOLOGICO DR. R. CARRILLO (EX NACIONAL) (Pequeño)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_442f57133e64977c9a44cc1f4157aa2d = L.circleMarker(
+                [-34.59720963815314, -58.47525872298964],
+                {"bubblingMouseEvents": true, "color": "steelblue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "steelblue", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 3.43, "stroke": true, "weight": 3}
+            ).addTo(map_eaef87784077adeecd206ed513c8da43);
+        
+    
+        var popup_f7f7177bc8711c8a4fcb67db28676f56 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_21b67cdc289b7d133c036ba6d8d9566e = $(`<div id="html_21b67cdc289b7d133c036ba6d8d9566e" style="width: 100.0%; height: 100.0%;"><b>HOSP. DE EMERG PSIQUIATRICAS TORCUATO DE ALVEAR</b><br>Tipo: Especializado<br>Tamaño: Pequeño<br>Población: 343</div>`)[0];
+                popup_f7f7177bc8711c8a4fcb67db28676f56.setContent(html_21b67cdc289b7d133c036ba6d8d9566e);
+            
+        
+
+        circle_marker_442f57133e64977c9a44cc1f4157aa2d.bindPopup(popup_f7f7177bc8711c8a4fcb67db28676f56)
+        ;
+
+        
+    
+    
+            circle_marker_442f57133e64977c9a44cc1f4157aa2d.bindTooltip(
+                `<div>
+                     HOSP. DE EMERG PSIQUIATRICAS TORCUATO DE ALVEAR (Pequeño)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_ec6edf109e63289adb9ada23f2c8a85c = L.circleMarker(
+                [-34.637513349832034, -58.3937321594529],
+                {"bubblingMouseEvents": true, "color": "steelblue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "steelblue", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 14.25, "stroke": true, "weight": 3}
+            ).addTo(map_eaef87784077adeecd206ed513c8da43);
+        
+    
+        var popup_65d0b9c379edb390864d1ff0c778ffa9 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_36e5b504eb7f2ed22c8260e92ffb3c82 = $(`<div id="html_36e5b504eb7f2ed22c8260e92ffb3c82" style="width: 100.0%; height: 100.0%;"><b>HOSP. DE INFECCIOSAS F. MUÃIZ</b><br>Tipo: Especializado<br>Tamaño: Pequeño<br>Población: 1,425</div>`)[0];
+                popup_65d0b9c379edb390864d1ff0c778ffa9.setContent(html_36e5b504eb7f2ed22c8260e92ffb3c82);
+            
+        
+
+        circle_marker_ec6edf109e63289adb9ada23f2c8a85c.bindPopup(popup_65d0b9c379edb390864d1ff0c778ffa9)
+        ;
+
+        
+    
+    
+            circle_marker_ec6edf109e63289adb9ada23f2c8a85c.bindTooltip(
+                `<div>
+                     HOSP. DE INFECCIOSAS F. MUÃIZ (Pequeño)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_13bfd389795c0ca5f1274b6fd43665ee = L.circleMarker(
+                [-34.62550210463096, -58.43239817506657],
+                {"bubblingMouseEvents": true, "color": "steelblue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "steelblue", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5.64, "stroke": true, "weight": 3}
+            ).addTo(map_eaef87784077adeecd206ed513c8da43);
+        
+    
+        var popup_d1385657b41b649208376e64c3705b88 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_3f75f5844474d107feafcd940df6211e = $(`<div id="html_3f75f5844474d107feafcd940df6211e" style="width: 100.0%; height: 100.0%;"><b>HOSP. MUNICIPAL DE QUEMADOS DR. ARTURO UMBERTO ILLIA</b><br>Tipo: Especializado<br>Tamaño: Pequeño<br>Población: 564</div>`)[0];
+                popup_d1385657b41b649208376e64c3705b88.setContent(html_3f75f5844474d107feafcd940df6211e);
+            
+        
+
+        circle_marker_13bfd389795c0ca5f1274b6fd43665ee.bindPopup(popup_d1385657b41b649208376e64c3705b88)
+        ;
+
+        
+    
+    
+            circle_marker_13bfd389795c0ca5f1274b6fd43665ee.bindTooltip(
+                `<div>
+                     HOSP. MUNICIPAL DE QUEMADOS DR. ARTURO UMBERTO ILLIA (Pequeño)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+</script>
+</html>
